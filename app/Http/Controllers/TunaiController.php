@@ -3,19 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\Models\Penduduk;
-use App\Models\Sembako;
+use App\Models\Tunai;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
-class SembakoController extends Controller
+class TunaiController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $viewsembakos = DB::table('viewsembako')->select('*')->get();
-        return view('sembako.sembako', compact('viewsembakos'));
+        $viewtunai = DB::table('viewtunai')->select('*')->get();
+        return view('tunai.tunai', compact('viewtunai'));
     }
 
     /**
@@ -24,7 +24,7 @@ class SembakoController extends Controller
     public function create()
     {
         $penduduks = Penduduk::orderBy('nik_kk', 'ASC')->get();
-        return view('sembako.create', compact('penduduks'));
+        return view('tunai.create', compact('penduduks'));
     }
 
     /**
@@ -32,13 +32,13 @@ class SembakoController extends Controller
      */
     public function store(Request $request)
     {
-        $simpan = new Sembako();
+        $simpan = new Tunai();
         $simpan->nik_kk = $request->input('nik');
-        $simpan->jenis_bantuan = $request->input('jenis');
+        $simpan->jumlah_dana = $request->input('dana');
         $simpan->tgl_bantuan = $request->input('tanggal');
         $simpan->keterangan = $request->input('keterangan');
         $simpan->save();
-        return redirect()->route('sembako.index')->with('pesan', 'Data Berhasil Ditambahkan');
+        return redirect()->route('tunai.index')->with('pesan', 'Data Berhasil Ditambahkan!');
     }
 
     /**
@@ -46,8 +46,8 @@ class SembakoController extends Controller
      */
     public function show(string $id)
     {
-        $data = Sembako::where('id', $id)->first();
-        return view('sembako.show', compact('data'));
+        $data = DB::table('viewtunai')->where('id', $id)->first();
+        return view('tunai.show', compact('data'));
     }
 
     /**
@@ -55,9 +55,9 @@ class SembakoController extends Controller
      */
     public function edit(string $id)
     {
-        $viewsembakos = DB::table('viewsembako')->where('id', $id)->get();
+        $viewtunai = DB::table('viewtunai')->where('id', $id)->get();
         $penduduks = Penduduk::orderBy('nik_kk', 'ASC')->get();
-        return view('sembako.edit', compact('viewsembakos', 'penduduks'));
+        return view('tunai.edit', compact('viewtunai', 'penduduks'));
     }
 
     /**
@@ -65,13 +65,13 @@ class SembakoController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $ubah = Sembako::findOrFail($id);
+        $ubah = Tunai::findOrFail($id);
         $ubah->nik_kk = $request->input('nik');
         $ubah->tgl_bantuan = $request->input('tanggal');
-        $ubah->jenis_bantuan = $request->input('jenis');
+        $ubah->jumlah_dana = $request->input('dana');
         $ubah->keterangan = $request->input('keterangan');
         $ubah->save();
-        return redirect()->route('sembako.index')->with('pesan', 'Data Berhasil Diubah!');
+        return redirect()->route('tunai.index')->with('pesan', 'Data Berhasil Diubah!');
     }
 
     /**
@@ -79,8 +79,8 @@ class SembakoController extends Controller
      */
     public function destroy(string $id)
     {
-        $hapus = Sembako::findOrFail($id);
+        $hapus = Tunai::findOrFail($id);
         $hapus->delete();
-        return redirect()->route('sembako.index')->with('pesan', 'Data Berhasil Dihapus!');
+        return redirect()->route('tunai.index')->with('pesan', 'Data Berhasil Dihapus!');
     }
 }

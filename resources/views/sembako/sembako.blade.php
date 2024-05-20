@@ -1,7 +1,7 @@
 <!-- Menghubungkan dengan view template master -->
 @extends('template.master')
 <!-- isi bagian judul halaman -->
-@section('judul_halaman', 'HALAMAN UTAMA BANTUAN SEMBAKO')
+@section('judul_halaman', 'HALAMAN UTAMA DATA BANTUAN SEMBAKO')
 <!-- isi bagian konten -->
 @section('konten')
 <a href="{{route('sembako.create')}}" type="button" class="btn btn-success">Tambah Data</a>

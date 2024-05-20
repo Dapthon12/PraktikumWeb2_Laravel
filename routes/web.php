@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\PendudukController;
 use App\Http\Controllers\SembakoController;
+use App\Http\Controllers\TunaiController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,9 +30,10 @@ Route::resource('penduduk', PendudukController::class);
 // })->name('datasembako');
 Route::resource('sembako', SembakoController::class);
 
-Route::get('/tunai', function () {
-    return view('tunai.tunai');
-})->name('datablt');
+// Route::get('/tunai', function () {
+//     return view('tunai.tunai');
+// })->name('datablt');
+Route::resource('tunai', TunaiController::class);
 
 Route::get('/rumah', function () {
     return view('rumah.rumah');

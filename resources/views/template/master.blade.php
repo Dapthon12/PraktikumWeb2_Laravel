@@ -30,7 +30,7 @@
                 </a>
             </li>
             <li>
-                <a class="text-white" href="{{route('datablt')}}">
+                <a class="text-white" href="{{route('tunai.index')}}">
                     <i class="bi bi-inboxes-fill mr-2"></i>
                     Bantuan Tunai / BLT
                 </a>

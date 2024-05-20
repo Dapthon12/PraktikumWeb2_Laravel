@@ -35,6 +35,7 @@
                             <input type="text" name="keterangan" placeholder="Keterangan" class="form-control" value="{{$data->keterangan}}" readonly>
                         </div>
                     </div>
+                    <br>
                     <div class="card-footer text-center">
                         <a href="{{route('sembako.index')}}" class="btn btn-danger">KEMBALI</a>
                     </div>
