@@ -36,7 +36,7 @@
                 </a>
             </li>
             <li>
-                <a class="text-white" href="{{route('bedahrumah')}}">
+                <a class="text-white" href="{{route('rumah.index')}}">
                     <i class="bi bi-stickies-fill mr-2"></i>
                     Bantuan Bedah Rumah
                 </a>

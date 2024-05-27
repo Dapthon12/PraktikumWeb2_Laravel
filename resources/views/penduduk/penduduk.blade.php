@@ -4,9 +4,10 @@
 @section('judul_halaman', 'HALAMAN UTAMA DATA PENDUDUK')
 <!-- isi bagian konten -->
 @section('konten')
-<a href="{{route('penduduk.create')}}" type="button" class="btn btn-success" id="btnModal">
-    Tambah Data
-</a>
+<div class="btn-group" role="group">
+    <a href="{{route('penduduk.create')}}" type="button" class="btn btn-success">Tambah Data</a>
+    <a href="{{route('cetakPenduduk')}}" type="button" class="btn btn-info">Cetak Laporan</a>
+</div>
 <hr>
 @if(Session::has('pesan'))
 <div class="alert alert-success" role="alert">
